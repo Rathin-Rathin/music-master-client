@@ -6,13 +6,14 @@ import {useContext, useState } from "react";
 import googleIcon from '../../assets/images/googleIcon/google_sign.jpg'
 import lock from '../../assets/images/icon/lock.gif';
 import Background from "../../components/Background";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 const SignUp = () => {
     useTitle('SignUp');
-    const { createUser,googleLogin} = useContext(AuthContext);
+    const {logOut,createUser,googleLogin} = useContext(AuthContext);
     const [active, setActive] = useState(true);
+    const navigate = useNavigate();
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm({ node: 'onTouched' });
   
     const showPassword = signal => {
@@ -24,12 +25,13 @@ const SignUp = () => {
         const password = data.password;
         createUser(email, password)
             .then(result => {
-                console.log(result);
                 Swal.fire({
                     icon: 'success',
-                    title: 'wow',
+                    title: `Wow ${result.user.displayName}`,
                     text: 'Register successful',
-                  })
+                })
+                logOut();
+                navigate('/login');
             })
             .catch(error => {
                 console.log(error.message);
@@ -39,12 +41,13 @@ const SignUp = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
-                console.log(result);
                 Swal.fire({
                     icon: 'success',
-                    title: 'wow',
+                    title: `Wow ${result.user.displayName}`,
                     text: 'Login successful',
                 })
+                logOut();
+                navigate('/login');
             })
             .catch(error => console.log(error.message));
     }

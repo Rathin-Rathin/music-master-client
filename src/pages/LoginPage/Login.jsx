@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Background from "../../components/Background";
 import useTitle from "../../hooks/useTitle";
@@ -13,36 +13,46 @@ const Login = () => {
     useTitle('Login');
     const { userLogIn,googleLogin } = useContext(AuthContext);
     const [active, setActive] = useState(true);
+    const [error, setError] = useState(null);
+    const location = useLocation();
+    const navigate = useNavigate();
+    let from = location.state?.from?.pathname || "/";
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ node: 'onTouched' });
     const onSubmit = data => {
         const email = data.email;
         const password = data.password;
         userLogIn(email, password)
             .then(result => {
-                console.log(result);
+                setError(null);
                 Swal.fire({
                     icon: 'success',
-                    title: 'wow',
+                    title: `Wow ${result.user ?.displayName}`,
                     text: 'Login successful',
-                  })
+                })
+                navigate(from,{replace:true})
+                reset();
             })
             .catch(error => {
-                console.log(error);
+                setError(error);
         })
-        reset();
+        
     };
     //Google sign in
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
-                console.log(result);
+                setError(null);
                 Swal.fire({
                     icon: 'success',
-                    title: 'wow',
+                    title: `Wow ${result.user ?.displayName}`,
                     text: 'Login successful',
                 })
+                navigate(from,{replace:true})
             })
-            .catch(error => console.log(error.message));
+            .catch(error => {
+                setError(error);
+            })
+               
     }
     //Show and hide password
     const showPassword = signal => {
@@ -72,6 +82,7 @@ const Login = () => {
                     </div>
 
                     {errors.password?.type === 'required' && <p >Password is required</p>}
+                    {error && <p >{error.message}</p>}
 
                     <div className="flex mt-4  gap-4 p-2 items-center">
                         <input className=" mt-[6px] cursor-pointer text-orange-500 w-4/12 border-white  font-bold" type="submit" value='Login' />
