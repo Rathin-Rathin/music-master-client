@@ -76,7 +76,7 @@ const SignUp = () => {
                     {errors.confirm_password?.type === 'validate' && <p >Password not matched</p>}
 
                     <div className="flex mt-4  gap-4 p-2 items-center">
-                        <input className=" mt-[6px] cursor-pointer text-orange-500 w-4/12  font-bold" type="submit" />
+                        <input className=" mt-[6px] cursor-pointer text-orange-500 w-4/12 border-white  font-bold" type="submit" value="Sign up"/>
                         <img src={googleIcon} className="cursor-pointer rounded h-[40px] w-full" alt="" />
                     </div>
                     <span className="font-bold px-2 text-white">Already SignUp?  <NavLink className='text-orange-500' to='/login'>Login</NavLink></span>
