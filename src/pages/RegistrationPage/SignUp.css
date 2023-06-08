@@ -4,11 +4,7 @@ body {
       sans-serif;
   }
   
-  form {
-    width:400px;
-    margin: 0 auto;
-    margin-top:50px;
-  }
+  
   
   h1 {
     font-weight: 100;
@@ -17,14 +13,15 @@ body {
     border-bottom: 1px solid rgb(79, 98, 148);
   }
   
- form p {
-    color: #bf1650;
-  }
+ form p{
+    color:orangered;
+ }
   
  form p::before {
     display: inline;
     content: "⚠ ";
     font-weight: bold;
+    color:orangered;
   }
   
   form input {
@@ -36,6 +33,10 @@ body {
     padding: 10px 15px;
     margin-bottom: 10px;
     font-size: 14px;
+  }
+  form label{
+    color:white;
+    font-weight: bold;
   }
  
   
