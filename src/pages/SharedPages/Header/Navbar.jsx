@@ -2,9 +2,11 @@ import { NavLink } from "react-router-dom";
 import Container from "../../../components/Container";
 import logo from '../../../assets/images/logo/logo.png'
 import Logo from "../../../components/logo";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
-    const user = false;// TO DO: user will came by auth.
+    const user = useContext(AuthContext);// TO DO: user will came by auth.
     const listItems = <>
 
         <NavLink to="/" className={({ isActive }) => (isActive ? 'text-blue-600 font-bold text-xl px-4' : 'px-4 font-semibold md:text-white text-lg')}>Home</NavLink>
@@ -36,7 +38,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {user ? <img src={logo} alt="" /> :
+                    {user ? <img src={logo} className="w-12 h-12 rounded-full" alt="" /> :
                         <NavLink to='/login' className={({ isActive }) => (isActive ? 'text-blue-600 font-bold text-xl px-4' : 'px-4 font-semibold text-white md:text-white text-lg')}>Login</NavLink>}
                 </div>
             </div>

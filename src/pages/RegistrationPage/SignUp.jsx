@@ -2,23 +2,52 @@ import { useForm } from "react-hook-form";
 import useTitle from "../../hooks/useTitle";
 import './SignUp.css';
 import { FaEye } from "react-icons/fa";
-import {useState } from "react";
+import {useContext, useState } from "react";
 import googleIcon from '../../assets/images/googleIcon/google_sign.jpg'
 import lock from '../../assets/images/icon/lock.gif';
 import Background from "../../components/Background";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 const SignUp = () => {
     useTitle('SignUp');
+    const { createUser,googleLogin} = useContext(AuthContext);
     const [active, setActive] = useState(true);
-    const { register, handleSubmit,watch, formState: { errors }, reset } = useForm({node:'onTouched'});
+    const { register, handleSubmit, watch, formState: { errors }, reset } = useForm({ node: 'onTouched' });
+  
     const showPassword = signal => {
         setActive(signal);
     }
 
     const onSubmit = data => {
-        console.log(data);
+        const email = data.email;
+        const password = data.password;
+        createUser(email, password)
+            .then(result => {
+                console.log(result);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'wow',
+                    text: 'Register successful',
+                  })
+            })
+            .catch(error => {
+                console.log(error.message);
+        })
         reset();
     };
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                console.log(result);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'wow',
+                    text: 'Login successful',
+                })
+            })
+            .catch(error => console.log(error.message));
+    }
     const password = watch('password');
     
    
@@ -77,7 +106,7 @@ const SignUp = () => {
 
                     <div className="flex mt-4  gap-4 p-2 items-center">
                         <input className=" mt-[6px] cursor-pointer text-orange-500 w-4/12 border-white  font-bold" type="submit" value="Sign up"/>
-                        <img src={googleIcon} className="cursor-pointer rounded h-[40px] w-full" alt="" />
+                        <img onClick={handleGoogleLogin} src={googleIcon} className="cursor-pointer rounded h-[40px] w-full" alt="" />
                     </div>
                     <span className="font-bold px-2 text-white">Already SignUp?  <NavLink className='text-orange-500' to='/login'>Login</NavLink></span>
                 </form>

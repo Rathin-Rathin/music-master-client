@@ -4,17 +4,47 @@ import Background from "../../components/Background";
 import useTitle from "../../hooks/useTitle";
 import googleIcon from '../../assets/images/googleIcon/google_sign.jpg'
 import lock from '../../assets/images/icon/lock.gif';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
     useTitle('Login');
+    const { userLogIn,googleLogin } = useContext(AuthContext);
     const [active, setActive] = useState(true);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ node: 'onTouched' });
     const onSubmit = data => {
-        console.log(data);
+        const email = data.email;
+        const password = data.password;
+        userLogIn(email, password)
+            .then(result => {
+                console.log(result);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'wow',
+                    text: 'Login successful',
+                  })
+            })
+            .catch(error => {
+                console.log(error);
+        })
         reset();
     };
+    //Google sign in
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                console.log(result);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'wow',
+                    text: 'Login successful',
+                })
+            })
+            .catch(error => console.log(error.message));
+    }
+    //Show and hide password
     const showPassword = signal => {
         setActive(signal);
     }
@@ -45,7 +75,7 @@ const Login = () => {
 
                     <div className="flex mt-4  gap-4 p-2 items-center">
                         <input className=" mt-[6px] cursor-pointer text-orange-500 w-4/12 border-white  font-bold" type="submit" value='Login' />
-                        <img src={googleIcon} className="cursor-pointer rounded h-[40px] w-full" alt="" />
+                        <img onClick={handleGoogleLogin} src={googleIcon} className="cursor-pointer rounded h-[40px] w-full" alt="" />
                     </div>
                     <span className="font-bold px-2 text-white">New in Music-master?  <NavLink className='text-orange-500' to='/signUp'>SignUp</NavLink></span>
                 </form>
