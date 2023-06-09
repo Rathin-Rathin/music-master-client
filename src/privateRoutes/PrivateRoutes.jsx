@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Navigate } from "react-router-dom";
-import LoadingSpiner from "../components/LoadingSpiner";
+import Loader from "../components/Loader";
 
 
 const PrivateRoutes = ({children}) => {
@@ -12,7 +12,10 @@ const PrivateRoutes = ({children}) => {
         return children;
     }
     if (loading) {
-        return <LoadingSpiner/>
+        return <Loader/>
+    //    return <p className='w-4/12 mx-auto'>
+    //         <progress className="progress progress-secondary  w-full"></progress>
+    //     </p>
     }
     
 };

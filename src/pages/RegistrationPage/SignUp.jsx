@@ -2,20 +2,20 @@ import { useForm } from "react-hook-form";
 import useTitle from "../../hooks/useTitle";
 import './SignUp.css';
 import { FaEye } from "react-icons/fa";
-import {useContext, useState } from "react";
-import googleIcon from '../../assets/images/googleIcon/google_sign.jpg'
+import { useContext, useState } from "react";
 import lock from '../../assets/images/icon/lock.gif';
 import Background from "../../components/Background";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import GoogleLogin from "../SharedPages/GoogleLogin/GoogleLogin";
 const SignUp = () => {
     useTitle('SignUp');
-    const {logOut,createUser,googleLogin} = useContext(AuthContext);
+    const { logOut, createUser,updateUserProfile } = useContext(AuthContext);
     const [active, setActive] = useState(true);
     const navigate = useNavigate();
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm({ node: 'onTouched' });
-  
+
     const showPassword = signal => {
         setActive(signal);
     }
@@ -23,37 +23,45 @@ const SignUp = () => {
     const onSubmit = data => {
         const email = data.email;
         const password = data.password;
+        const name = data.name;
+        const photo = data.photo;
         createUser(email, password)
             .then(result => {
-                Swal.fire({
-                    icon: 'success',
-                    title: `Wow ${result.user.displayName}`,
-                    text: 'Register successful',
-                })
-                logOut();
-                navigate('/login');
+                console.log(result.user);
+                updateUserProfile(name, photo)
+                    .then(() => {
+                        const saveUser={name,email,photo}
+                        fetch(`${import.meta.env.VITE_url}/users`, {
+                            method: 'POST',
+                            headers: { 'Content-type': 'application/json' },
+                            body:JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(() => {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: `Wow ${result.user.displayName}`,
+                                    text: 'Register successful',
+                                })
+                                reset();
+                                logOut();
+                                navigate('/login');
+                            })
+
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    })
+
             })
             .catch(error => {
                 console.log(error.message);
-        })
-        reset();
-    };
-    const handleGoogleLogin = () => {
-        googleLogin()
-            .then(result => {
-                Swal.fire({
-                    icon: 'success',
-                    title: `Wow ${result.user.displayName}`,
-                    text: 'Login successful',
-                })
-                logOut();
-                navigate('/login');
             })
-            .catch(error => console.log(error.message));
-    }
+        
+    };
+ 
     const password = watch('password');
-    
-   
+
     return (
         <Background>
             <div className="flex items-center justify-center" >
@@ -66,7 +74,7 @@ const SignUp = () => {
                     {/* Name field  */}
                     <label>Name</label>
                     <input type="text" name="name"
-                     {...register("name", { required: true })} placeholder="Type your name" />
+                        {...register("name", { required: true })} placeholder="Type your name" />
                     {errors.name && <p>Name  is required</p>}
                     {/* PhotoUrl  */}
                     <label>Photo Url</label>
@@ -79,12 +87,12 @@ const SignUp = () => {
                     {/* Password field  */}
                     <label>Password</label>
                     <div className="relative">
-                        <input type={active ? "password" : "text"}           name="password"
-                           {...register("password", {
-                            required: true,
-                            minLength: 6,
-                            pattern: /^(?=.*[A-Z])(?=.*[!@#$&*]).+$/
-                        })} placeholder="Type your  Password" />
+                        <input type={active ? "password" : "text"} name="password"
+                            {...register("password", {
+                                required: true,
+                                minLength: 6,
+                                pattern: /^(?=.*[A-Z])(?=.*[!@#$&*]).+$/
+                            })} placeholder="Type your  Password" />
                         <FaEye onClick={() => showPassword(!active)} className="cursor-pointer absolute top-1/3 right-5" />
                     </div>
 
@@ -100,16 +108,19 @@ const SignUp = () => {
                         {...register("confirm_password", {
                             required: 'confirm_password is required',
                             validate: (value) =>
-                                value === password || "The Confirm password do not match" 
-                            
+                                value === password || "The Confirm password do not match"
+
                         })}
                     />
                     {errors.confirm_password?.type === 'required' && <p >Password is required</p>}
                     {errors.confirm_password?.type === 'validate' && <p >Password not matched</p>}
 
                     <div className="flex mt-4  gap-4 p-2 items-center">
-                        <input className=" mt-[6px] cursor-pointer text-orange-500 w-4/12 border-white  font-bold" type="submit" value="Sign up"/>
-                        <img onClick={handleGoogleLogin} src={googleIcon} className="cursor-pointer rounded h-[40px] w-full" alt="" />
+                        <input className=" mt-[6px] cursor-pointer text-orange-500 w-4/12 border-white  font-bold" type="submit" value="Sign up" />
+
+                        {/* Google login  */}
+                        <GoogleLogin/>
+                       
                     </div>
                     <span className="font-bold px-2 text-white">Already SignUp?  <NavLink className='text-orange-500' to='/login'>Login</NavLink></span>
                 </form>
