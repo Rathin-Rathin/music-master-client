@@ -1,0 +1,178 @@
+[
+    {
+        "name": "Guitar Basics",
+        "img": "https://img.freepik.com/free-photo/music-background-with-guitar-drumsticks-top-view_169016-23670.jpg?w=740&t=st=1686353157~exp=1686353757~hmac=93116e3defeb6a3275cf0e9f758a6dd9cd96a90386d474e175fbe09f862c06f3",
+        "instructorName": "John Smith",
+        "availableSeats": 10,
+        "price": 50,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Piano Lessons",
+        "img": "https://img.freepik.com/free-photo/kid-playing-keyboard-beautiful-girl-reading-piece-sheet-music-learning-how-play-piano-while-practicing-her-music-lessons-living-room_662251-1379.jpg?w=740&t=st=1686353312~exp=1686353912~hmac=588f6bde020d637900a2efb1e6cd6d4a01269a3f03b02f212e830175c5bb5103",
+        "instructorName": "Emily Johnson",
+        "availableSeats": 5,
+        "price": 75,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Drumming 101",
+        "img": "https://img.freepik.com/free-photo/hands-playing-drums-close-up_23-2149029457.jpg?w=740&t=st=1686353409~exp=1686354009~hmac=cf92777b8e32313259e1a6cb2710cf9bcb5a13d3a934357db0516df18e31320e",
+        "instructorName": "Mike Davis",
+        "availableSeats": 8,
+        "price": 60,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Vocal Training",
+        "img": "https://img.freepik.com/free-photo/side-view-female-musician-home-writing-song-while-playing-acoustic-guitar_23-2148890857.jpg?w=740&t=st=1686353559~exp=1686354159~hmac=b5e25c626648742027f48e99b541e4679f13fab16e68a96ae8e6450ae0853a71",
+        "instructorName": "Sarah Thompson",
+        "availableSeats": 12,
+        "price": 70,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Pro drumming",
+        "img": "https://img.freepik.com/free-photo/music-background-with-guitar-drumsticks-top-view_169016-23670.jpg?w=740&t=st=1686353157~exp=1686353757~hmac=93116e3defeb6a3275cf0e9f758a6dd9cd96a90386d474e175fbe09f862c06f3",
+        "instructorName": "David Brown",
+        "availableSeats": 6,
+        "price": 55,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Violin Masterclass",
+        "img": "https://img.freepik.com/free-photo/child-playing-violin-smiling-latin-girl-practicing-her-music-lessons-home-young-student-taking-online-classes-learn-play-new-instrument_662251-1401.jpg?w=740&t=st=1686353655~exp=1686354255~hmac=266f81153d502ed1a70f3c757ce8ac5801255e917133f732e5577b155f5e7163",
+        "instructorName": "Sophia Anderson",
+        "availableSeats": 4,
+        "price": 80,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Pro drumming",
+        "img": "https://img.freepik.com/premium-photo/front-view-portrait-shot-teenage-drummer-playing-music-young-musician-playing-drum-while-looking-camera-smiling-junior-student-playing-instrument-with-white-background_102814-3356.jpg?w=740",
+        "instructorName": "Mark Wilson",
+        "availableSeats": 15,
+        "price": 65,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Keyboard Techniques",
+        "img": "https://img.freepik.com/free-photo/kid-playing-keyboard-beautiful-girl-reading-piece-sheet-music-learning-how-play-piano-while-practicing-her-music-lessons-living-room_662251-1379.jpg?w=740&t=st=1686353312~exp=1686353912~hmac=588f6bde020d637900a2efb1e6cd6d4a01269a3f03b02f212e830175c5bb5103",
+        "instructorName": "Jennifer Lee",
+        "availableSeats": 7,
+        "price": 70,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Vocal mastering",
+        "img": "https://img.freepik.com/free-photo/side-view-female-musician-home-writing-song-while-playing-acoustic-guitar_23-2148890857.jpg?w=740&t=st=1686353559~exp=1686354159~hmac=b5e25c626648742027f48e99b541e4679f13fab16e68a96ae8e6450ae0853a71",
+        "instructorName": "Alex Rodriguez",
+        "availableSeats": 10,
+        "price": 90,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Music Theory Fundamentals",
+        "img": "https://img.freepik.com/free-photo/table-musician_23-2147670596.jpg?w=740&t=st=1686353711~exp=1686354311~hmac=e3d17a430fa4813e831ba3564176a10903c8f79c88e89500215722e86bf3bafc",
+        "instructorName": "Daniel White",
+        "availableSeats": 20,
+        "price": 40,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Saxophone Mastery",
+        "img": "https://img.freepik.com/free-photo/male-musician-spotlight-holding-saxophone_23-2148730875.jpg?w=740&t=st=1686353739~exp=1686354339~hmac=93ce334eb8f0bc370e085228b805859994a2417a9b84438191f31b1386312f10",
+        "instructorName": "Olivia Green",
+        "availableSeats": 3,
+        "price": 85,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Cello Lessons",
+        "img": "https://img.freepik.com/free-photo/young-blogger-recording-herself-playing-guitar_23-2148538802.jpg?w=740&t=st=1686353769~exp=1686354369~hmac=d3a6ca88bd488302bbcf9c138559330a27878b8807617fc3616d228ebbaeae77",
+        "instructorName": "Matthew Thompson",
+        "availableSeats": 9,
+        "price": 75,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "https://img.freepik.com/free-photo/music-background-with-guitar-drumsticks-top-view_169016-23670.jpg?w=740&t=st=1686353157~exp=1686353757~hmac=93116e3defeb6a3275cf0e9f758a6dd9cd96a90386d474e175fbe09f862c06f3",
+        "img": "https://example.com/rock-guitar.jpg",
+        "instructorName": "Robert Johnson",
+        "availableSeats": 6,
+        "price": 65,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Music Production Masterclass",
+        "img": "https://img.freepik.com/free-photo/guy-playing-guitar-woman-recording-from-view_23-2148366466.jpg?w=740&t=st=1686353802~exp=1686354402~hmac=032300c90684abca5ee444028ef88a1b3758e2899d91b8b6c251bbb0666f7662",
+        "instructorName": "Michelle Adams",
+        "availableSeats": 10,
+        "price": 90,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Ukulele for Beginners",
+        "img": "https://img.freepik.com/free-photo/boy-with-headphones-playing-ukulele-long-shot_23-2148573917.jpg?w=740&t=st=1686353833~exp=1686354433~hmac=145a22e3b32bcc816f79a325d07a585692fbf08beec6840d586a298679f0fef8",
+        "instructorName": "Andrew Wilson",
+        "availableSeats": 8,
+        "price": 55,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Jazz Improvisation Workshop",
+        "img": "https://img.freepik.com/free-photo/young-friends-hostel_23-2150518173.jpg?w=740&t=st=1686353862~exp=1686354462~hmac=c1797937a547c050cc333257c25ffa033544fa95e819c65fe81aa484527e48ea",
+        "instructorName": "Laura Davis",
+        "availableSeats": 12,
+        "price": 75,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Tabla Lessons",
+        "img": "https://img.freepik.com/free-vector/indian-musical-instrument-illustration_96037-403.jpg?w=740&t=st=1686354009~exp=1686354609~hmac=092e3533ce779a86618e5ff27bb7340591580b7e9c11be9312025433b892860b",
+        "instructorName": "Ravi Patel",
+        "availableSeats": 4,
+        "price": 80,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Electronic Music Production",
+        "img": "https://img.freepik.com/free-photo/man-composer-producer-arranger-songwriter-musician-hands-arranging-music_169016-26744.jpg?w=740&t=st=1686354044~exp=1686354644~hmac=93a9d028c76a1c4f62766655638ae22f5814028888924b0b30fc34dbba290bf3",
+        "instructorName": "Sophie Martin",
+        "availableSeats": 7,
+        "price": 70,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Harp for Beginners",
+        "img": "https://img.freepik.com/free-vector/harp-instrument-white-background_1308-95669.jpg?w=360&t=st=1686354076~exp=1686354676~hmac=d053af928c743815f71351c51822e7212b3a6ccbd9faf05d699fccd0e21ff6b7",
+        "instructorName": "Natalie Thompson",
+        "availableSeats": 5,
+        "price": 85,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Flute Mastery",
+        "img": "https://img.freepik.com/premium-photo/flute-player-playing-flute-during-autumn-indian-handsome-flute-player-images_181020-1911.jpg?w=740",
+        "instructorName": "Benjamin Scott",
+        "availableSeats": 9,
+        "price": 75,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Songwriting Techniques",
+        "img": "https://img.freepik.com/free-photo/woman-writing-down-some-lyrics_53876-146872.jpg?w=740&t=st=1686354144~exp=1686354744~hmac=d2e98d6eaef70cc2ae19819871d03cabb3fb4b4c185e6c5d18505eed6b014095",
+        "instructorName": "Isabella Wilson",
+        "availableSeats": 15,
+        "price": 60,
+        "selectBtn": "Select"
+    },
+    {
+        "name": "Bollywood music Workshop",
+        "img": "https://img.freepik.com/free-photo/young-asian-duet-singers-with-microphone-recording-song-record-music-studio_627829-3802.jpg?w=740&t=st=1686354187~exp=1686354787~hmac=d85782363ae20eb76bbaba32647723f2f5790a004a500c4a8802722b7c9582ba",
+        "instructorName": "Amit Shah",
+        "availableSeats": 10,
+        "price": 50,
+        "selectBtn": "Select"
+    }
+]
