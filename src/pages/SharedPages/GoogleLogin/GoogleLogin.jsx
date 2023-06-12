@@ -13,24 +13,24 @@ const GoogleLogin = () => {
         googleLogin()
             .then(result => {
                 const user = result.user;
-                const saveUser={name:user.displayName, email:user.email,photo:user.photoURL}
-                        fetch(`${import.meta.env.VITE_url}/users`, {
-                            method: 'POST',
-                            headers: { 'Content-type': 'application/json' },
-                            body:JSON.stringify(saveUser)
+                const saveUser = { name: user.displayName, email: user.email, photo: user.photoURL }
+                fetch(`${import.meta.env.VITE_url}/users`, {
+                    method: 'POST',
+                    headers: { 'Content-type': 'application/json' },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: `Wow ${result.user.displayName}`,
+                            text: 'Login successful',
                         })
-                            .then(res => res.json())
-                            .then(() => {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: `Wow ${result.user.displayName}`,
-                                    text: 'Register successful',
-                                })
-                                
-                            })
 
-                navigate(from,{replace:true})
-                
+                    })
+
+                navigate(from, { replace: true })
+
             })
             .catch(error => console.log(error.message));
     }

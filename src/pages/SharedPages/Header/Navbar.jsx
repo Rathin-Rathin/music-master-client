@@ -8,12 +8,12 @@ const Navbar = () => {
     const navigate = useNavigate();
     const listItems = <>
 
-        <NavLink to="/home" className={({ isActive }) => (isActive ? 'text-blue-600 font-bold text-xl px-4' : 'px-4 font-semibold md:text-white text-lg')}>Home</NavLink>
-        <NavLink to="/" className={({ isActive }) => (isActive ? 'text-blue-600 font-bold text-xl px-4' : 'px-4 font-semibold md:text-white text-lg')}>Instructors</NavLink>
-        <NavLink to="/" className={({ isActive }) => (isActive ? 'text-blue-600 font-bold text-xl px-4' : 'px-4 font-semibold md:text-white text-lg')}>Classes</NavLink>
+        <NavLink to="/home" className={({ isActive }) => (isActive ? 'rounded  font-bold border  text-white px-2 border-white' : 'px-4 font-semibold md:bg-opacity-20 text-white text-lg')}>Home</NavLink>
+        <NavLink to="/" className={({ isActive }) => (isActive ? 'rounded  font-bold border  text-white px-2 border-white' : 'px-4 font-semibold md:bg-opacity-20 text-white text-lg')}>Instructors</NavLink>
+        <NavLink to="/classes" className={({ isActive }) => (isActive ? 'rounded  font-bold border  text-white px-2 border-white' : 'px-4 font-semibold md:bg-opacity-20 text-white text-lg')}>Classes</NavLink>
 
-        {user && <NavLink to="/" className={({ isActive }) => (isActive ? 'text-blue-600 font-bold text-xl px-4' : 'px-4 font-semibold md:text-white text-lg')}>Profile</NavLink>}
-        {user && <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'text-blue-600 font-bold text-xl px-4' : 'px-4 font-semibold md:text-white text-lg')}>Dashboard</NavLink>}
+        {user && <NavLink to="/" className={({ isActive }) => (isActive ? 'rounded  font-bold border  text-white px-2 border-white' : 'px-4 font-semibold md:bg-opacity-20 text-white text-lg')}>Profile</NavLink>}
+        {user && <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'rounded  font-bold border  text-white px-2 border-white' : 'px-4 font-semibold md:bg-opacity-20 text-white text-lg')}>Dashboard</NavLink>}
 
 
     </>
@@ -46,9 +46,9 @@ const Navbar = () => {
                     <>
                         <img src={user?.photoURL
                         } className="w-12 h-12 rounded-full" alt="" />
-                        <button onClick={handleLogOut} className="font-bold text-xl text-white border p-1 hover:bg-orange-400 hover:border-0  border-white  mx-2">Logout</button></>
+                        <button onClick={handleLogOut} className="font-bold text-xl bg-opacity-20 text-white border p-1 hover:bg-orange-400 hover:border-0  border-white  mx-2">Logout</button></>
                     :
-                    <NavLink to='/login' className={({ isActive }) => (isActive ? 'text-blue-600 font-bold text-xl px-4' : 'px-4 font-semibold text-white md:text-white text-lg')}>Login</NavLink>}
+                    <NavLink to='/login' className={({ isActive }) => (isActive ? 'rounded  font-bold border  text-white px-2 border-white' : 'px-4 font-semibold bg-opacity-20 text-white md:bg-opacity-20 text-lg')}>Login</NavLink>}
             </div>
         </div>
 

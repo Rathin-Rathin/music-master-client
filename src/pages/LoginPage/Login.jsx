@@ -70,9 +70,7 @@ const Login = () => {
 
                     <div className="flex mt-4  gap-4 p-2 items-center">
                         <input className=" mt-[6px] cursor-pointer text-orange-500 w-4/12 border-white  font-bold" type="submit" value='Login' />
-                        {/* Google login  */}
                         <GoogleLogin/>
-                        {/* <img onClick={handleGoogleLogin} src={googleIcon} className="cursor-pointer rounded h-[40px] w-full" alt="" /> */}
                     </div>
                     <span className="font-bold px-2 text-white">New in Music-master?  <NavLink className='text-orange-500' to='/signUp'>SignUp</NavLink></span>
                 </form>
