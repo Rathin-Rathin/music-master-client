@@ -13,10 +13,10 @@ const AddAClass = () => {
     const onSubmit = (data) => {
         const name = data.courseName;
         const availableSeats = parseInt(data.availableSeats);
-        const userEmail = data.availableSeats;
+        const userEmail = data.instructorEmail;
         const userName = data.instructorName;
         const price = parseInt(data.price);
-        const status = parseInt(data.status);
+        const status = data.status;
         const userPhoto = user.photoURL;
         const formData = new FormData();
         formData.append('image', data.image[0])
@@ -143,9 +143,9 @@ const AddAClass = () => {
                     Status
                 </label>
                 <input
-                    type='number'
+                    type='text'
                     id="status"
-                    value="0"
+                    value="pending"
                     {...register('status', { required: 'Status is required' })}
                     className="border  border-black p-2 rounded-md w-full"
                 >
