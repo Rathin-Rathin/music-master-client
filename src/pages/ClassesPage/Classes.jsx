@@ -3,18 +3,25 @@ import bg from '../../assets/images/section_banner/classes.avif'
 import BannerBg from "../../components/BannerBg";
 import Container from "../../components/Container";
 import SectionTitle from "../../components/SectionTitle";
-import { useEffect, useState } from "react";
 import Card from "../../components/Card";
-
+import { useQuery } from '@tanstack/react-query'
+import Loader from "../../components/Loader";
 const Classes = () => {
     useTitle('classes');
-    const [allClass, setAllClass] = useState(null);
-    useEffect(() => {
-        fetch(`${import.meta.env.VITE_url}/classes`)
-            .then(res => res.json())
-            .then(data => setAllClass(data))
-
-    }, [])
+    //Tanstack query
+    const { isLoading,data } = useQuery({
+        queryKey: ['classes'],
+        queryFn: async () => {
+            const res = await fetch(`${import.meta.env.VITE_url}/classes`)
+            if (!res.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return res.json()
+        },
+    })
+    if (isLoading) {
+        <Loader/>
+    }
     return (
         <div>
 
@@ -23,9 +30,9 @@ const Classes = () => {
                 <SectionTitle title='All Classes' />
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
                     {
-                        allClass?.map(data => <Card
-                            key={data._id}
-                            data={data}
+                        data?.map(course => <Card
+                            key={course._id}
+                            course={course}
                         />)
                     }
                 </div>
