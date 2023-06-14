@@ -1,25 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import useAxiosSecure from "./useAxiosSecure";
 
 
 const useClasses = () => {
-    
-    const { user } = useContext(AuthContext);
+    const [axiosSecure] = useAxiosSecure();
+    const { user, loading } = useContext(AuthContext);
     const email = user?.email;
-    const { data: insClasses,refetch } = useQuery({
+    const { data: insClasses, refetch } = useQuery({
         queryKey: ['classes', email],
+        enabled: !loading,
         queryFn: async () => {
-            const res = await fetch(`${import.meta.env.VITE_url}/classes/${email}`)
-            if (!res.ok) {
-                throw new Error('Network response was not ok')
-            }
-            return res.json(
-
-            )
+            const res = await axiosSecure(`/classes/${email}`)
+            console.log('res from axios', res)
+            return res.data;
         },
+
     })
-    return [insClasses,refetch]
+    return [insClasses, refetch]
 };
 
 export default useClasses;

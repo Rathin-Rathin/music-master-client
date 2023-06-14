@@ -1,12 +1,13 @@
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import axios from "axios";
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
     const [loading, setLoading] = useState(true);
-    const [user,setUser]=useState(null);
+    const [user, setUser] = useState(null);
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
@@ -19,27 +20,40 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return signInWithPopup(auth, provider);
     }
+ 
+    const logOut = () => {
+        setLoading(true);
+        localStorage.removeItem('access-token');
+        return signOut(auth);
+    }
+
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            setLoading(false);
+            if (currentUser?.email) {
+                axios.post(`${import.meta.env.VITE_url}/jwt`, { email: currentUser.email })
+                    .then(data => {
+                        localStorage.setItem('access-token', data.data.token)
+                        setLoading(false);
+                    })
+            } else {
+                localStorage.removeItem('access-token');
+                setLoading(false);
+            }
+
         })
         return () => {
             unSubscribe();
         }
     }, [])
-    const updateUserProfile = (name,photo) => {
+    const updateUserProfile = (name, photo) => {
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo,
         });
 
     }
-    const logOut = () => {
-        setLoading(true);
-        return signOut(auth);
-    }
-    
+
     const authInfo = {
         user,
         createUser,

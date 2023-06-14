@@ -6,7 +6,7 @@ const Common = () => {
     return (
         <div>
             <div className="text-xl">
-                <div className="divider"></div>
+                <hr/>
                 <li className=" hover:bg-slate-700"><NavLink to='/classes'><SiCoursera/>Classes</NavLink></li>
                 <li className="hover:bg-slate-700"><NavLink to='/'><FaHome />Home</NavLink></li>
             </div>
