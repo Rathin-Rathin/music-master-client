@@ -6,6 +6,7 @@ import SectionTitle from "../../components/SectionTitle";
 import Card from "../../components/Card";
 import { useQuery } from '@tanstack/react-query'
 import Loader from "../../components/Loader";
+import { ToastContainer } from "react-toastify";
 const Classes = () => {
     useTitle('classes');
     //Tanstack query
@@ -22,6 +23,7 @@ const Classes = () => {
     if (isLoading) {
         <Loader/>
     }
+    const approvedCourses = data?.filter(course => course.status === "approved");
     return (
         <div>
 
@@ -30,14 +32,14 @@ const Classes = () => {
                 <SectionTitle title='All Classes' />
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
                     {
-                        data?.map(course => <Card
+                        approvedCourses?.map(course => <Card
                             key={course._id}
                             course={course}
                         />)
                     }
                 </div>
             </Container>
-
+            <ToastContainer/>
 
         </div>
 
