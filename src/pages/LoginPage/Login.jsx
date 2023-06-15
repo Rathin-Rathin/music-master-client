@@ -6,11 +6,13 @@ import lock from '../../assets/images/icon/lock.gif';
 import { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
-import Swal from "sweetalert2";
 import GoogleLogin from "../SharedPages/GoogleLogin/GoogleLogin";
+ import { ToastContainer} from "react-toastify";
+import useTosta from "../../hooks/useTosta";
 
 const Login = () => {
     useTitle('Login');
+    const [notify] = useTosta();
     const { userLogIn} = useContext(AuthContext);
     const [active, setActive] = useState(true);
     const [error, setError] = useState(null);
@@ -23,13 +25,8 @@ const Login = () => {
         const password = data.password;
         userLogIn(email, password)
             .then(result => {
-                console.log(result.user);
-                setError(null);
-                Swal.fire({
-                    icon: 'success',
-                    title: `Wow ${result.user ?.displayName}`,
-                    text: 'Login successful',
-                })
+                console.log(result);
+                notify('Login Success!');
                 navigate(from,{replace:true})
                 reset();
             })
@@ -74,6 +71,7 @@ const Login = () => {
                     </div>
                     <span className="font-bold px-2 text-white">New in Music-master?  <NavLink className='text-orange-500' to='/signUp'>SignUp</NavLink></span>
                 </form>
+                <ToastContainer />
             </div>
         </Background>
     );

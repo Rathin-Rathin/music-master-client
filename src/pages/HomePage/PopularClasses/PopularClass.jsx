@@ -20,7 +20,7 @@ const PopularClass = ({ course }) => {
                         <p className="mb-3 text-xl italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"> <span className="">Students :- </span>{course?.stents}</p>
                         {/* Price  */}
                         <p className="mb-3 text-xl font-bold text-orange-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"> <span className="">Price :- $ </span>{course?.price}</p>
-                        <Link className="font-bold text-md bg-opacity-20 text-white border p-1 px-2 hover:bg-orange-400 hover:border-0  border-white  mx-2">Select Class</Link>
+                        <Link className="font-bold text-md bg-opacity-20 text-white border p-1 px-2 hover:bg-orange-400 hover:border-0  border-white  mx-2">See more</Link>
                     </div>
                 </div>
             </div>

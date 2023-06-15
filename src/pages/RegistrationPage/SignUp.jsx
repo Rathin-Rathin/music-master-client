@@ -7,10 +7,12 @@ import lock from '../../assets/images/icon/lock.gif';
 import Background from "../../components/Background";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import Swal from "sweetalert2";
 import GoogleLogin from "../SharedPages/GoogleLogin/GoogleLogin";
+import { ToastContainer } from "react-toastify";
+import useTosta from "../../hooks/useTosta";
 const SignUp = () => {
     useTitle('SignUp');
+    const [notify] = useTosta();
     const { logOut, createUser,updateUserProfile } = useContext(AuthContext);
     const [active, setActive] = useState(true);
     const navigate = useNavigate();
@@ -38,11 +40,7 @@ const SignUp = () => {
                         })
                             .then(res => res.json())
                             .then(() => {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: `Wow ${result.user.displayName}`,
-                                    text: 'Register successful',
-                                })
+                                notify('Register successful!')
                                 reset();
                                 logOut();
                                 navigate('/login');
@@ -124,6 +122,7 @@ const SignUp = () => {
                     </div>
                     <span className="font-bold px-2 text-white">Already SignUp?  <NavLink className='text-orange-500' to='/login'>Login</NavLink></span>
                 </form>
+                <ToastContainer />
             </div>
         </Background>
     );

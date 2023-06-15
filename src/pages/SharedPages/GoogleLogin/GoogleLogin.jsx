@@ -1,10 +1,12 @@
 import { useContext } from 'react';
 import googleIcon from '../../../assets/images/googleIcon/google_sign.jpg'
 import { AuthContext } from '../../../providers/AuthProvider';
-import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import useTosta from '../../../hooks/useTosta';
 
 const GoogleLogin = () => {
+    const [notify] = useTosta();
     const { googleLogin } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
@@ -21,11 +23,7 @@ const GoogleLogin = () => {
                 })
                     .then(res => res.json())
                     .then(() => {
-                        Swal.fire({
-                            icon: 'success',
-                            title: `Wow ${result.user.displayName}`,
-                            text: 'Login successful',
-                        })
+                        notify('Login successful!')
 
                     })
 
@@ -37,6 +35,7 @@ const GoogleLogin = () => {
     return (
         <div>
             <img onClick={handleGoogleLogin} src={googleIcon} className="cursor-pointer rounded h-[40px] w-full" alt="" />
+            <ToastContainer />
         </div>
     );
 };
