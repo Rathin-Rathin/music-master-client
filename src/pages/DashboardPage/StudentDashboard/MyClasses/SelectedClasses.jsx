@@ -1,22 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-import { useContext } from "react";
-import { AuthContext } from "../../../../providers/AuthProvider";
+
 import Swal from "sweetalert2";
 import useTosta from "../../../../hooks/useTosta";
+import { ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
+import useMyClasses from "../../../../hooks/useMyClasses";
 
 
 const SelectedClasses = () => {
     const [notify] = useTosta();
-    const { user } = useContext(AuthContext);
-    const [axiosSecure] = useAxiosSecure();
-    const { data: myClasses,refetch } = useQuery({
-        queryKey: ['selectedClass', user?.email],
-        queryFn: async () => {
-            const res = await axiosSecure(`/selectClass/${user?.email}`)
-            return res.data;
-        }
-    })
+    const [myClasses,refetch] = useMyClasses([]);
     //Class delete
     const handleDelete = id => {
         Swal.fire({
@@ -72,13 +64,14 @@ const SelectedClasses = () => {
                                 <th className="flex gap-2 items-center justify-center">
                                     <button onClick={() => handleDelete(myClass._id)} className="btn bg-red-400 font-bold ">Delete</button>
 
-                                    <button className="btn bg-green-400 font-bold ">Pay</button>
+                                    <Link to={`/dashboard/payment/${myClass?._id}`} className="btn bg-green-400 font-bold ">Pay</Link>
                                 </th>
                             </tr>)
                         }
 
                     </tbody>
                 </table>
+                <ToastContainer/>
             </div>
         </div>
     );

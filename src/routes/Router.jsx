@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
                 element:<InstructorClasses/>
             },
             {
-                path: 'payment',
+                path: '/dashboard/payment/:id',
                 element:<Payment/>
             }, {
                 path: 'selectedClasses',
