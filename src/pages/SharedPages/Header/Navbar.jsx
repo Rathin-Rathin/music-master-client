@@ -9,10 +9,10 @@ const Navbar = () => {
     const listItems = <>
 
         <NavLink to="/home" className={({ isActive }) => (isActive ? 'rounded  font-bold border  text-white px-2 border-white' : 'px-4 font-semibold md:bg-opacity-20 text-white text-lg')}>Home</NavLink>
-        <NavLink to="/" className={({ isActive }) => (isActive ? 'rounded  font-bold border  text-white px-2 border-white' : 'px-4 font-semibold md:bg-opacity-20 text-white text-lg')}>Instructors</NavLink>
+        <NavLink to="/instructor" className={({ isActive }) => (isActive ? 'rounded  font-bold border  text-white px-2 border-white' : 'px-4 font-semibold md:bg-opacity-20 text-white text-lg')}>Instructors</NavLink>
         <NavLink to="/classes" className={({ isActive }) => (isActive ? 'rounded  font-bold border  text-white px-2 border-white' : 'px-4 font-semibold md:bg-opacity-20 text-white text-lg')}>Classes</NavLink>
 
-        {user && <NavLink to="/" className={({ isActive }) => (isActive ? 'rounded  font-bold border  text-white px-2 border-white' : 'px-4 font-semibold md:bg-opacity-20 text-white text-lg')}>Profile</NavLink>}
+        {user && <NavLink to="/profile" className={({ isActive }) => (isActive ? 'rounded  font-bold border  text-white px-2 border-white' : 'px-4 font-semibold md:bg-opacity-20 text-white text-lg')}>Profile</NavLink>}
         {user && <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'rounded  font-bold border  text-white px-2 border-white' : 'px-4 font-semibold md:bg-opacity-20 text-white text-lg')}>Dashboard</NavLink>}
 
 
